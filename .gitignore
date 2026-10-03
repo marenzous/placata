@@ -1,0 +1,8 @@
+# Segredos — NUNCA versionar
+config.local.php
+.env*
+# Fotos enviadas pelo painel (as do seed ficam versionadas)
+uploads/produtos/produto-*
+# Diversos
+*.log
+.DS_Store

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512" role="img" aria-labelledby="t">
+  <title id="t">PLACATA — símbolo</title>
+  <path d="M19 4H81L96 19V81L81 96H19L4 81V19Z" fill="#1F2124"/>
+    <path d="M22 12H78L88 22V78L78 88H22L12 78V22Z" fill="none" stroke="#C9A86E" stroke-width="1.4"/>
+    <path d="M50 79C48.6 63 51.2 45 50 25" fill="none" stroke="#C9A86E" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M0 0C6 -3.6 15 -4.4 21 0C15 4.4 6 3.6 0 0Z" fill="#C9A86E" transform="translate(49.4 70) rotate(-143) scale(0.9)"/>
+    <path d="M0 0C6 -3.6 15 -4.4 21 0C15 4.4 6 3.6 0 0Z" fill="#C9A86E" transform="translate(49.4 65) rotate(-37) scale(0.9)"/>
+    <path d="M0 0C6 -3.6 15 -4.4 21 0C15 4.4 6 3.6 0 0Z" fill="#C9A86E" transform="translate(50.3 57) rotate(-143) scale(0.8)"/>
+    <path d="M0 0C6 -3.6 15 -4.4 21 0C15 4.4 6 3.6 0 0Z" fill="#C9A86E" transform="translate(50.3 52) rotate(-37) scale(0.8)"/>
+    <path d="M0 0C6 -3.6 15 -4.4 21 0C15 4.4 6 3.6 0 0Z" fill="#C9A86E" transform="translate(50.1 44) rotate(-143) scale(0.7)"/>
+    <path d="M0 0C6 -3.6 15 -4.4 21 0C15 4.4 6 3.6 0 0Z" fill="#C9A86E" transform="translate(50.1 39) rotate(-37) scale(0.7)"/>
+    <path d="M0 0C6 -3.6 15 -4.4 21 0C15 4.4 6 3.6 0 0Z" fill="#C9A86E" transform="translate(50 27) rotate(-90) scale(0.6)"/>
+</svg>

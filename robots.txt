@@ -1,0 +1,48 @@
+# PLACATA — placata.com.br
+User-agent: *
+Allow: /
+Disallow: /mzcentral/
+Disallow: /instalar/
+
+# Crawlers de IA liberados (Regra #26 — AEO/GEO)
+User-agent: GPTBot
+Allow: /
+Disallow: /mzcentral/
+Disallow: /instalar/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /mzcentral/
+Disallow: /instalar/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /mzcentral/
+Disallow: /instalar/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /mzcentral/
+Disallow: /instalar/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /mzcentral/
+Disallow: /instalar/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /mzcentral/
+Disallow: /instalar/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /mzcentral/
+Disallow: /instalar/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /mzcentral/
+Disallow: /instalar/
+
+Sitemap: https://placata.com.br/sitemap.xml
