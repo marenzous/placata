@@ -10,8 +10,8 @@
 
 declare(strict_types=1);
 
-const PLACATA_VERSAO = 'v2.0';
-const PLACATA_ASSET_V = '2.0';
+const PLACATA_VERSAO = 'v2.01';
+const PLACATA_ASSET_V = '2.01';
 const PLACATA_URL = 'https://placata.com.br';
 const MENSAGEM_WHATSAPP = 'Olá! Vim pelo site da Placata e gostaria de fazer um orçamento.';
 

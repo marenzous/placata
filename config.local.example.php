@@ -25,4 +25,7 @@ return [
     // Cookie de login só trafega em HTTPS. Deixe true em produção.
     // (Use false apenas para testar no computador sem HTTPS.)
     'cookie_seguro' => true,
+
+    // Remetente do e-mail de "Esqueci minha senha" (opcional).
+    // 'email_remetente' => 'no-reply@placata.com.br',
 ];

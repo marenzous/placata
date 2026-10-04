@@ -59,3 +59,29 @@ CREATE TABLE IF NOT EXISTS tentativas_login (
   KEY tentativas_ip_email (ip, email, criado_em),
   KEY tentativas_criado (criado_em)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- v2.01: "Esqueci minha senha". Só o HASH (sha256) do link fica gravado.
+-- Também criadas sozinhas na primeira vez que o fluxo roda (inc/admin.php).
+CREATE TABLE IF NOT EXISTS redefinicao_senha (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  admin_id INT UNSIGNED NOT NULL,
+  token_hash CHAR(64) NOT NULL,
+  expira_em DATETIME NOT NULL,
+  usado_em DATETIME NULL,
+  ip VARCHAR(45) NOT NULL DEFAULT '',
+  criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY redefinicao_token (token_hash),
+  KEY redefinicao_admin (admin_id, usado_em)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS tentativas_redefinicao (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  ip VARCHAR(45) NOT NULL,
+  email VARCHAR(190) NOT NULL DEFAULT '',
+  tipo VARCHAR(10) NOT NULL,
+  criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY tentativas_redef_email (email, tipo, criado_em),
+  KEY tentativas_redef_ip (ip, criado_em)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

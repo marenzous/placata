@@ -46,9 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $pdo) {
             $_SESSION['admin_id'] = (int)$u['id'];
             $_SESSION['admin_email'] = $u['email'];
             $_SESSION['ultimo_uso'] = time();
+            $_SESSION['senha_marca'] = admin_senha_marca($u['senha_hash']);
             unset($_SESSION['csrf']);
             if (password_needs_rehash($u['senha_hash'], PASSWORD_DEFAULT)) {
-                $pdo->prepare('UPDATE admins SET senha_hash = ? WHERE id = ?')->execute([password_hash($senha, PASSWORD_DEFAULT), $u['id']]);
+                $novoHash = password_hash($senha, PASSWORD_DEFAULT);
+                $pdo->prepare('UPDATE admins SET senha_hash = ? WHERE id = ?')->execute([$novoHash, $u['id']]);
+                $_SESSION['senha_marca'] = admin_senha_marca($novoHash);
             }
             $pdo->prepare('UPDATE admins SET ultimo_login = NOW() WHERE id = ?')->execute([$u['id']]);
             redirecionar('/mzcentral/painel.php');
@@ -76,6 +79,7 @@ header('Content-Type: text/html; charset=utf-8');
     <div class="adm-card">
       <img src="/assets/logo/placata-logo-branco.svg" alt="PLACATA" width="149" height="30">
       <h1 class="login-titulo">Entrar no painel</h1>
+      <?= mostrar_aviso() ?>
 <?php if ($erro): ?>
       <div role="alert" class="alerta erro"><?= h($erro) ?></div>
 <?php endif; ?>
@@ -94,6 +98,7 @@ header('Content-Type: text/html; charset=utf-8');
         </div>
         <button type="submit" class="adm-btn primario largo">Entrar</button>
       </form>
+      <p class="login-rodape"><a href="/mzcentral/esqueci.php">Esqueci minha senha</a></p>
     </div>
   </main>
 </body>

@@ -59,10 +59,25 @@ Roda em hospedagem **Plesk comum** (PHP + MySQL). Não precisa de Node, Supabase
 | **Textos do topo** | Título grande e frase de apresentação. |
 | **Contato** | Número do WhatsApp (pode digitar com máscara, ex. `(62) 99699-5138`), texto de atendimento e área atendida. O número vale para **todos** os botões do site, para o Google (schema) e para o `llms.txt`. |
 | **Perguntas frequentes** | Adicionar, editar, ordem, esconder e excluir. Também alimentam o "Perguntas e respostas" que o Google lê. |
-| **Trocar minha senha** | Troca a senha do acesso. |
+| **Trocar minha senha** | Troca a senha do acesso. Esqueceu? Use "Esqueci minha senha" no login. |
 
 Todos os botões de WhatsApp mandam a mesma mensagem, fixa:
 *"Olá! Vim pelo site da Placata e gostaria de fazer um orçamento."*
+
+## Esqueci minha senha
+
+Na tela de login, clique em **Esqueci minha senha** e digite o e-mail de acesso.
+Se ele estiver cadastrado, chega um e-mail de **no-reply@placata.com.br** com um link
+que vale **30 minutos** e **uma vez só** (a tela sempre mostra a mesma resposta, exista
+ou não o e-mail). No link, crie a nova senha (mínimo 10 caracteres) e entre de novo.
+
+- Limites: 3 pedidos por e-mail por hora e 10 por IP por hora (link errado também conta).
+- Pedir de novo cancela o link anterior. Trocar a senha encerra as outras sessões abertas.
+- O banco guarda só o código embaralhado (hash) do link, nunca o link em si.
+- Tabelas `redefinicao_senha` e `tentativas_redefinicao`: criadas sozinhas no primeiro uso.
+- Envio pelo `mail()` do PHP (sendmail do Plesk). Não chegou? Veja o spam e confira, no
+  Plesk, se o e-mail do domínio está ligado com **SPF** e **DKIM** para placata.com.br.
+  Para trocar por SMTP no futuro, mexa só na função `enviar_email()` em `inc/admin.php`.
 
 ## Segurança (resumo técnico)
 
@@ -106,5 +121,5 @@ assets/                      CSS, fontes, logos, imagem de compartilhamento
 robots.txt, sitemap.xml      SEO
 ```
 
-Versão no rodapé: **v2.0**. A cada alteração no código, subir a versão em
+Versão no rodapé: **v2.01**. A cada alteração no código, subir a versão em
 `config.php` (`PLACATA_VERSAO` e `PLACATA_ASSET_V`).

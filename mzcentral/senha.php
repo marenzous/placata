@@ -23,16 +23,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!password_verify($atual, $hash)) {
         $erros[] = 'A senha atual está errada.';
     }
-    if (mb_strlen($nova) < 10) {
-        $erros[] = 'A nova senha precisa ter pelo menos 10 caracteres.';
-    } elseif ($nova !== $conf) {
-        $erros[] = 'A confirmação não é igual à nova senha.';
+    $errosNova = senha_nova_erros($nova, $conf);
+    if ($errosNova) {
+        $erros = array_merge($erros, $errosNova);
     } elseif ($nova === $atual) {
         $erros[] = 'A nova senha precisa ser diferente da atual.';
     }
     if (!$erros) {
-        $pdo->prepare('UPDATE admins SET senha_hash = ? WHERE id = ?')->execute([password_hash($nova, PASSWORD_DEFAULT), (int)$_SESSION['admin_id']]);
+        $novoHash = password_hash($nova, PASSWORD_DEFAULT);
+        $pdo->prepare('UPDATE admins SET senha_hash = ? WHERE id = ?')->execute([$novoHash, (int)$_SESSION['admin_id']]);
         session_regenerate_id(true);
+        // Esta sessão continua; qualquer outra aberta com a senha antiga cai.
+        $_SESSION['senha_marca'] = admin_senha_marca($novoHash);
         avisar('Senha trocada. Use a nova senha no próximo acesso.');
         redirecionar('/mzcentral/senha.php');
     }

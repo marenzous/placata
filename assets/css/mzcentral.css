@@ -80,3 +80,9 @@
 .adm-form { max-width: 680px; }
 .adm-item.adm-item-faq { grid-template-columns: 1fr auto; }
 @media (max-width: 640px) { .adm-item.adm-item-faq { grid-template-columns: 1fr; } }
+
+/* ---- v2.01: esqueci minha senha ---- */
+.login-rodape { margin: 1rem 0 0; text-align: center; font-size: .9rem; }
+.login-rodape a { color: var(--suave); }
+.login-rodape a:hover { color: var(--texto); }
+.login-texto { color: var(--suave); font-size: .92rem; margin: 0 0 1rem; }
