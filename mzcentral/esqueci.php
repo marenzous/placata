@@ -137,7 +137,9 @@ if ($ehPost) {
     }
 }
 
-if ($pendente) {
+if ($ehPost) {
+    // Em TODO POST, nao so quando o e-mail existe: cabecalho diferente entregaria
+    // quem esta cadastrado (achado do security-gate na revisao de fdc635d).
     ignore_user_abort(true); // o envio continua mesmo depois que o navegador fecha
     header('Connection: close');
 }
@@ -153,5 +155,6 @@ if (function_exists('fastcgi_finish_request')) {
 }
 
 if ($pendente && $pdo) {
+    @set_time_limit(30); // o envio nao pode prender o processo indefinidamente
     esqueci_enviar_link($pdo, $pendente, $ip);
 }
